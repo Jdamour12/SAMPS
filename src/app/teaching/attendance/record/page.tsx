@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PortalShell } from "@/components/portal-shell";
 import {
@@ -29,7 +29,7 @@ const students = [
   { no: "010", reg: "222009765", status: "Absent" },
 ];
 
-export default function AttendanceRecordContent() {
+function AttendanceRecordContent() {
   const router = useRouter();
   const params = useSearchParams();
   const sessionName = params.get("session") || "Session";
@@ -85,6 +85,7 @@ export default function AttendanceRecordContent() {
       description="Attendance record and statistics for this session."
     >
       <div className="max-w-5xl mx-auto space-y-6">
+        {/* Back Button */}
         <div className="mb-2 flex items-center">
           <Button
             variant="ghost"
@@ -209,5 +210,14 @@ export default function AttendanceRecordContent() {
         </Card>
       </div>
     </PortalShell>
+  );
+}
+
+// Wrap content in Suspense
+export default function AttendanceRecordPage() {
+  return (
+    <Suspense fallback={<div>Loading attendance...</div>}>
+      <AttendanceRecordContent />
+    </Suspense>
   );
 }
