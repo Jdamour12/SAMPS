@@ -45,13 +45,6 @@ function AttendanceContent() {
       icon: null,
     },
     {
-      label: "Avg Attendance",
-      value: "78%",
-      sub: "+2% from last week",
-      color: "bg-gradient-to-r from-green-400 to-green-600 text-white",
-      icon: null,
-    },
-    {
       label: "This Week",
       value: 8,
       sub: "Sessions scheduled",
@@ -221,7 +214,7 @@ function AttendanceContent() {
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 mb-4">
         {stats.map((stat, i) => (
           <div
             key={i}
@@ -613,9 +606,7 @@ function AttendanceContent() {
                 <table className="w-full">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="text-left p-3 font-medium">
-                        Student NO
-                      </th>
+                      <th className="text-left p-3 font-medium">Student NO</th>
                       <th className="text-left p-3 font-medium">Student ID</th>
                       <th className="text-left p-3 font-medium">Status</th>
                       <th className="text-left p-3 font-medium">
@@ -731,7 +722,8 @@ function AttendanceContent() {
                             <td className="p-3 whitespace-nowrap">{s.id}</td>
                             <td className="p-3 whitespace-nowrap flex gap-2">
                               <Button
-                                type="button" disabled
+                                type="button"
+                                disabled
                                 className={`px-4 py-1 rounded font-semibold text-sm transition-all border ${
                                   attendance[studentIdx] === "Present"
                                     ? "bg-[#026892] text-white border-[#026892]"

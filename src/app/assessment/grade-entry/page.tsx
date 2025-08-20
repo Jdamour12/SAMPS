@@ -110,7 +110,7 @@ function GradeEntryContent() {
             </div>
           </div>
           <div>
-            <div className="text-xs text-gray-500">Total Marks</div>
+            <div className="text-xs text-gray-500">Max Marks</div>
             <div className="font-semibold text-base">{totalMarks || "-"}</div>
           </div>
         </CardContent>

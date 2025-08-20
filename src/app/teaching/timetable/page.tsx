@@ -203,7 +203,7 @@ function TimetableContent() {
                   {timetableData.map((day) => (
                     <th
                       key={day.day}
-                      className={`p-2 border text-left font-semibold text-gray-700 ${day.color}`}
+                      className="p-2 border text-left font-semibold text-gray-700 bg-white"
                     >
                       {day.day}
                     </th>
@@ -224,15 +224,14 @@ function TimetableContent() {
                       return (
                         <td
                           key={day.day}
-                          className={`p-2 border align-top ${day.color}`}
+                          className="p-2 border align-top bg-white"
                         >
                           {session ? (
                             <div
-                              className="rounded px-2 py-1 mb-1 bg-white shadow border"
+                              className="rounded px-2 py-1 mb-1 shadow border"
                               style={{
-                                borderColor: day.color
-                                  ?.replace("bg-", "")
-                                  .replace("-100", ""),
+                                background: "#EFF6FF",
+                                borderColor: "#BFDBFE",
                               }}
                             >
                               <div className="font-bold text-[#026892]">

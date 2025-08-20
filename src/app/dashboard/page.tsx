@@ -135,7 +135,7 @@ function getDashboardWidgets(role: string) {
               </div>
             </div>
             <Link href="/assessment/grades">
-              <div className="flex items-center justify-between cursor-pointer hover:bg-gray-50 p-2 rounded">
+              <div className="flex items-center justify-between cursor-pointer hover:bg-gray-50 pt-3 rounded">
                 <span className="text-sm font-medium text-gray-700">
                   Pending Grades
                 </span>
@@ -248,7 +248,10 @@ function DashboardContent({ role }: { role: string }) {
           </Card>
         ))}
 
-        <Card className="academic-card md:col-span-2">
+        <Card
+          className="academic-card md:col-span-2"
+          style={{ minHeight: 320 }}
+        >
           <CardHeader className="pb-3">
             <CardTitle className="text-lg font-semibold text-gray-900">
               Performance Analytics
@@ -258,10 +261,7 @@ function DashboardContent({ role }: { role: string }) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div
-              className="w-full"
-              style={{ minHeight: 180, maxHeight: 200, overflow: "auto" }}
-            >
+            <div className="w-full">
               <ChartContainer
                 config={{
                   score: { color: "#026892" },

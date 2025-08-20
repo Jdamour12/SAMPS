@@ -50,9 +50,9 @@ function ModulesContent() {
       </div>
       <div className="space-y-4">
         <h2 className="text-xl font-semibold text-gray-900">
-          Enrolled Courses
+          Assigned Courses
         </h2>
-        <Card className="p-4 border-2 border-gray-100">
+        <Card className="p-4  border-gray-100">
           <div className="grid gap-4 md:grid-cols-2">
             {modules.map((module, index) => (
               <Card key={index} className="academic-card w-full">

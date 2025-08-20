@@ -84,7 +84,7 @@ function StudentPerformanceContent() {
           </div>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-6">
-              <div className="bg-blue-50 rounded-lg p-4 shadow">
+              <div className="rounded-lg p-4 shadow">
                 <h3 className="font-semibold text-blue-900 mb-2">
                   Performance Overview
                 </h3>
@@ -157,7 +157,7 @@ function StudentPerformanceContent() {
                   </BarChart>
                 </ChartContainer>
               </div>
-              <div className="bg-yellow-50 rounded-lg p-4 shadow flex flex-col items-center">
+              <div className="rounded-lg p-4 shadow flex flex-col items-center">
                 <h3 className="font-semibold text-yellow-900 mb-2">
                   Intervention Actions
                 </h3>

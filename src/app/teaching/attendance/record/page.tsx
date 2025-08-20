@@ -17,16 +17,41 @@ import { ChevronRight } from "lucide-react";
 
 // Dummy students data
 const students = [
-  { no: "001", reg: "222005824", status: "Present" },
-  { no: "002", reg: "222007252", status: "Absent" },
-  { no: "003", reg: "321013529", status: "Permission" },
-  { no: "004", reg: "222017795", status: "Present" },
-  { no: "005", reg: "222017468", status: "Absent" },
-  { no: "006", reg: "222004841", status: "Present" },
-  { no: "007", reg: "222013628", status: "Present" },
-  { no: "008", reg: "222018030", status: "Permission" },
-  { no: "009", reg: "222009408", status: "Present" },
-  { no: "010", reg: "222009765", status: "Absent" },
+  { no: "001", reg: "222005824", status: "Present", absenceType: "" },
+  {
+    no: "002",
+    reg: "222007252",
+    status: "Absent",
+    absenceType: "With Permission",
+  },
+  {
+    no: "003",
+    reg: "321013529",
+    status: "Absent",
+    absenceType: "Without Permission",
+  },
+  { no: "004", reg: "222017795", status: "Present", absenceType: "" },
+  {
+    no: "005",
+    reg: "222017468",
+    status: "Absent",
+    absenceType: "With Permission",
+  },
+  { no: "006", reg: "222004841", status: "Present", absenceType: "" },
+  { no: "007", reg: "222013628", status: "Present", absenceType: "" },
+  {
+    no: "008",
+    reg: "222018030",
+    status: "Absent",
+    absenceType: "Without Permission",
+  },
+  { no: "009", reg: "222009408", status: "Present", absenceType: "" },
+  {
+    no: "010",
+    reg: "222009765",
+    status: "Absent",
+    absenceType: "With Permission",
+  },
 ];
 
 function AttendanceRecordContent() {
@@ -35,6 +60,8 @@ function AttendanceRecordContent() {
   const sessionName = params.get("session") || "Session";
 
   // Example statistics
+  // Find percent for the selected session (simulate with first student for demo)
+  const sessionPercent = 93; // Replace with actual percent if available from session data
   const stats = [
     {
       label: "Total Students",
@@ -45,7 +72,7 @@ function AttendanceRecordContent() {
     {
       label: "Present",
       value: students.filter((s) => s.status === "Present").length,
-      sub: "Marked present by device",
+      sub: `Marked present by device • Avg Attendance: ${sessionPercent}%`,
       color: "bg-green-100 text-green-700",
     },
     {
@@ -55,8 +82,10 @@ function AttendanceRecordContent() {
       color: "bg-red-100 text-red-700",
     },
     {
-      label: "Permission",
-      value: students.filter((s) => s.status === "Permission").length,
+      label: "Absent With Permission",
+      value: students.filter(
+        (s) => s.status === "Absent" && s.absenceType === "With Permission"
+      ).length,
       sub: "Excused absences",
       color: "bg-yellow-100 text-yellow-700",
     },
@@ -84,7 +113,7 @@ function AttendanceRecordContent() {
       title={sessionName}
       description="Attendance record and statistics for this session."
     >
-      <div className="max-w-5xl mx-auto space-y-6">
+      <div className="w-full px-4 md:px-8 space-y-6">
         {/* Back Button */}
         <div className="mb-2 flex items-center">
           <Button
@@ -156,25 +185,31 @@ function AttendanceRecordContent() {
                     <th className="text-left p-3 font-medium">NO</th>
                     <th className="text-left p-3 font-medium">Reg Number</th>
                     <th className="text-left p-3 font-medium">Status</th>
+                    <th className="text-left p-3 font-medium">Absence Type</th>
                   </tr>
                 </thead>
                 <tbody>
                   {paginatedStudents.map((s, i) => (
-                    <tr key={i} className="border-t">
-                      <td className="p-3 whitespace-nowrap">{s.no}</td>
-                      <td className="p-3 whitespace-nowrap">{s.reg}</td>
-                      <td className="p-3 whitespace-nowrap">
+                    <tr key={i} className="border-t text-gray-700">
+                      <td className="p-3 whitespace-nowrap text-gray-600">
+                        {s.no}
+                      </td>
+                      <td className="p-3 whitespace-nowrap font-bold text-gray-800">
+                        {s.reg}
+                      </td>
+                      <td className="p-3 whitespace-nowrap text-gray-600">
                         <Badge
                           className={
                             s.status === "Present"
                               ? "bg-green-100 text-green-700"
-                              : s.status === "Absent"
-                              ? "bg-red-100 text-red-700"
-                              : "bg-yellow-100 text-yellow-700"
+                              : "bg-red-100 text-red-700"
                           }
                         >
-                          {s.status}
+                          {s.status === "Present" ? "Present" : "Absent"}
                         </Badge>
+                      </td>
+                      <td className="p-3 whitespace-nowrap text-gray-600">
+                        {s.status === "Absent" ? s.absenceType : "-"}
                       </td>
                     </tr>
                   ))}

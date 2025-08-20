@@ -76,10 +76,9 @@ const navigationConfig = {
           { title: "Class Lists", url: "/students/lists" },
           { title: "Performance", url: "/students/performance" },
           { title: "Absences", url: "/students/absences" },
-          { title: "Group Management", url: "/students/groups" },
-          { title: "Student Marks", url: "/students/marks" },
+          // ...existing code...
           {
-            title: "Permission Requests",
+            title: "Absence Requests",
             url: "/students/permission-requests",
           },
         ],
@@ -89,12 +88,11 @@ const navigationConfig = {
         icon: ClipboardCheck,
         items: [
           { title: "Calendar", url: "/assessment/calendar" },
-          { title: "Create", url: "/assessment/create" },
           { title: "Grades", url: "/assessment/grades" },
+          { title: "Results", url: "/students/marks" },
           // The following are hidden from the sidebar UI but remain in config for logic:
           { title: "Moderation", url: "/assessment/moderation", hidden: true },
           { title: "Analysis", url: "/assessment/analysis", hidden: true },
-          { title: "Archives", url: "/assessment/archives" },
           {
             title: "Grade Entry",
             url: "/assessment/grade-entry",
@@ -193,9 +191,10 @@ export function PortalShell({
     } else if (
       pathname.startsWith("/assessment/moderation") ||
       pathname.startsWith("/assessment/analysis") ||
-      pathname.startsWith("/assessment/grade-entry")
+      pathname.startsWith("/assessment/grade-entry") ||
+      pathname.startsWith("/assessment/create")
     ) {
-      // Always highlight 'Grades' for these hidden subpages
+      // Always highlight 'Grades' for these hidden subpages and for create
       activeSubItemUrl = "/assessment/grades";
       setExpandedSection("Assessment");
     } else {

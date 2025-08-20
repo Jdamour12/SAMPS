@@ -52,78 +52,58 @@ function CreateAssessmentContent() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-3">
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Assessment Title</label>
-                <Input
-                  placeholder="Enter assessment title"
-                  value={assessmentTitle}
-                  onChange={(e) => setAssessmentTitle(e.target.value)}
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Module</label>
-                <Select
-                  value={module}
-                  onValueChange={(value) => {
-                    setModule(value);
-                    setModuleLabel(
-                      value === "math"
-                        ? "Advanced Mathematics"
-                        : value === "stats"
-                        ? "Statistics"
-                        : value
-                    );
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select module" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="math">Advanced Mathematics</SelectItem>
-                    <SelectItem value="stats">Statistics</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Assessment Type</label>
-                <Select
-                  value={assessmentType}
-                  onValueChange={setAssessmentType}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="examination">Examination</SelectItem>
-                    <SelectItem value="assignment">Assignment</SelectItem>
-                    <SelectItem value="quiz">Quiz</SelectItem>
-                    <SelectItem value="project">Project</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">
-                  Duration (minutes)
-                </label>
-                <Input type="number" placeholder="120" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Total Marks</label>
-                <Input
-                  type="number"
-                  placeholder="100"
-                  value={totalMarks}
-                  onChange={(e) => setTotalMarks(e.target.value)}
-                />
-              </div>
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-8 rounded-xl shadow-lg w-full">
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Module</label>
+              <Select
+                value={module}
+                onValueChange={(value) => {
+                  setModule(value);
+                  setModuleLabel(
+                    value === "math"
+                      ? "Advanced Mathematics"
+                      : value === "stats"
+                      ? "Statistics"
+                      : value
+                  );
+                }}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select module" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="math">Advanced Mathematics</SelectItem>
+                  <SelectItem value="stats">Statistics</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-2">
+              <label className="text-sm font-medium">Assessment Type</label>
+              <Select value={assessmentType} onValueChange={setAssessmentType}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="examination">Examination</SelectItem>
+                  <SelectItem value="assignment">Assignment</SelectItem>
+                  <SelectItem value="quiz">Quiz</SelectItem>
+                  <SelectItem value="project">Project</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Total Marks</label>
+              <Input
+                type="number"
+                placeholder="100"
+                value={totalMarks}
+                onChange={(e) => setTotalMarks(e.target.value)}
+              />
+            </div>
+
+            <div className="space-y-2 col-span-1 md:col-span-2">
               <label className="text-sm font-medium">Description</label>
               <textarea
                 className="w-full p-3 border rounded-lg resize-none"
@@ -132,18 +112,12 @@ function CreateAssessmentContent() {
               />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Start Date & Time</label>
-                <Input type="datetime-local" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">End Date & Time</label>
-                <Input type="datetime-local" />
-              </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Assessment Date</label>
+              <Input type="datetime-local" />
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-end pt-2 col-span-1 md:col-span-2">
               <Button
                 className="bg-[#026892] hover:bg-[#026892]/90"
                 onClick={handleCreateAssessment}
@@ -153,7 +127,7 @@ function CreateAssessmentContent() {
               </Button>
               <Button variant="outline">Save as Draft</Button>
             </div>
-          </div>
+          </form>
         </CardContent>
       </Card>
     </div>
