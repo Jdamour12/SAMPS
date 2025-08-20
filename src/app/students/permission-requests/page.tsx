@@ -74,7 +74,7 @@ export default function PermissionRequestsPage() {
                     <th className="p-2 text-left font-medium">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-sm text-gray-700">
                     {requests.map((req) => (
                     <tr key={req.id} className="border-t">
                         <td className="p-2">{req.student}</td>

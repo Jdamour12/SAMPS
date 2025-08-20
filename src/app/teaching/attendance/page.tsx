@@ -458,14 +458,14 @@ function AttendanceContent() {
                       <th className="text-left p-3 font-medium">Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="text-gray-700">
                     {paginatedSessions.map((s, i) => (
                       <tr className="border-t" key={i}>
-                        <td className="p-3 whitespace-nowrap">{s.name}</td>
-                        <td className="p-3 whitespace-nowrap">{s.type}</td>
-                        <td className="p-3 whitespace-nowrap">{s.class}</td>
-                        <td className="p-3 whitespace-nowrap">{s.location}</td>
-                        <td className="p-3 whitespace-nowrap flex items-center gap-2">
+                        <td className="p-3 whitespace-nowrap text-sm">{s.name}</td>
+                        <td className="p-3 whitespace-nowrap text-sm">{s.type}</td>
+                        <td className="p-3 whitespace-nowrap text-sm">{s.class}</td>
+                        <td className="p-3 whitespace-nowrap text-sm">{s.location}</td>
+                        <td className="p-3 whitespace-nowrap flex items-center gap-2 text-sm">
                           {s.attendance}
                           <Badge
                             className={
@@ -481,8 +481,8 @@ function AttendanceContent() {
                             {s.percent}%
                           </Badge>
                         </td>
-                        <td className="p-3 whitespace-nowrap">{s.created}</td>
-                        <td className="p-3 whitespace-nowrap">
+                        <td className="p-3 whitespace-nowrap text-sm">{s.created}</td>
+                        <td className="p-3 whitespace-nowrap text-sm">
                           <Button
                             variant="ghost"
                             size="icon"
@@ -621,9 +621,9 @@ function AttendanceContent() {
                       );
                       return (
                         <tr key={s.id} className="border-t">
-                          <td className="p-3 whitespace-nowrap">{s.no}</td>
-                          <td className="p-3 whitespace-nowrap">{s.id}</td>
-                          <td className="p-3 whitespace-nowrap">
+                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">{s.no}</td>
+                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">{s.id}</td>
+                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">
                             <Badge
                               className={
                                 attendance[studentIdx] === "Present"
@@ -636,7 +636,7 @@ function AttendanceContent() {
                               {attendance[studentIdx]}
                             </Badge>
                           </td>
-                          <td className="p-3 whitespace-nowrap">
+                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">
                             {s.lastAttendance}
                           </td>
                         </tr>

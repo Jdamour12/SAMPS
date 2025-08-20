@@ -196,7 +196,7 @@ function AssessmentModerationContent() {
                     <th className="text-left p-3 font-medium">Actions</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-sm text-gray-700">
                   {paginatedRows.map((row, idx) => (
                     <tr
                       className="border-t"

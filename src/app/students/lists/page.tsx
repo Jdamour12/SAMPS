@@ -64,15 +64,15 @@ function ClassListsContent() {
         <CardContent>
           <div className="space-y-4">
             <div className="flex flex-wrap gap-4 justify-between items-center">
-              <Select defaultValue="advanced-math">
+              <Select defaultValue="computer-science">
                 <SelectTrigger className="w-[200px]">
                   <SelectValue placeholder="Select Class" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="advanced-math">
-                    Advanced Mathematics
+                  <SelectItem value="computer-science">
+                    Computer Science
                   </SelectItem>
-                  <SelectItem value="statistics">Statistics</SelectItem>
+                  <SelectItem value="information-technology">Information Technology</SelectItem>
                 </SelectContent>
               </Select>
               <Select value={selectedYear} onValueChange={setSelectedYear}>
@@ -116,11 +116,11 @@ function ClassListsContent() {
                 <tbody>
                   {pagedStudents.map((student) => (
                     <tr className="border-t" key={student.studentId}>
-                      <td className="p-3">{student.studentNo}</td>
-                      <td className="p-3">{student.studentId}</td>
-                      <td className="p-3">{student.email}</td>
-                      <td className="p-3">{student.year}</td>
-                      <td className="p-3">
+                      <td className="p-3 text-gray-700 text-sm">{student.studentNo}</td>
+                      <td className="p-3 text-black-900 text-sm">{student.studentId}</td>
+                      <td className="p-3 text-gray-700 text-sm">{student.email}</td>
+                      <td className="p-3 text-gray-700 text-sm">{student.year}</td>
+                      <td className="p-3 text-gray-700 text-sm">
                         <Badge
                           className={
                             student.status === "Active"

@@ -89,6 +89,17 @@ function GradeEntryContent() {
 
   return (
     <div className="space-y-6">
+      <div className="flex items-center">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={handleBackToModeration}
+          className="text-gray-600 hover:text-gray-900"
+        >
+          <ChevronRight className="h-4 w-4 rotate-180 mr-2" />
+          Back to Grade Moderation
+        </Button>
+      </div>
       <Card className="mb-2 shadow-sm border border-gray-200">
         <CardContent className="flex flex-wrap gap-6 py-4 px-6 items-center justify-between">
           <div>
@@ -115,17 +126,7 @@ function GradeEntryContent() {
           </div>
         </CardContent>
       </Card>
-      <div className="flex items-center">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleBackToModeration}
-          className="text-gray-600 hover:text-gray-900"
-        >
-          <ChevronRight className="h-4 w-4 rotate-180 mr-2" />
-          Back to Grade Moderation
-        </Button>
-      </div>
+      
       <Card className="academic-card">
         <CardHeader>
           <div className="flex items-center justify-between">
@@ -177,11 +178,11 @@ function GradeEntryContent() {
                     <th className="text-left p-3 font-bold">Grade</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-sm text-gray-700">
                   {paginatedStudents.map((student) => (
                     <tr className="border-t" key={student.id}>
                       <td className="p-3">{student.name}</td>
-                      <td className="p-3 font-bold">{student.id}</td>
+                      <td className="p-3 font-bold text-sm">{student.id}</td>
                       <td className="p-3">
                         <Input
                           className="w-20"

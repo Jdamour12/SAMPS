@@ -28,7 +28,9 @@ function CreateAssessmentContent() {
   const [moduleLabel, setModuleLabel] = useState("");
   const [totalMarks, setTotalMarks] = useState("");
 
-  const handleCreateAssessment = () => {
+  const handleCreateAssessment = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    console.log("assessmentType:", assessmentType);
     if (assessmentType === "examination") {
       const params = new URLSearchParams({
         title: assessmentTitle,
@@ -44,6 +46,29 @@ function CreateAssessmentContent() {
 
   return (
     <div className="space-y-3">
+      <div className="mb-4">
+        <Button
+          variant="outline"
+          className="flex items-center gap-2"
+          onClick={() => (window.location.href = "/assessment/moderation")}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-4 h-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+          Back to Moderation
+        </Button>
+      </div>
       <Card className="academic-card">
         <CardHeader>
           <CardTitle className="text-lg">Create New Assessment</CardTitle>
@@ -119,6 +144,7 @@ function CreateAssessmentContent() {
 
             <div className="flex gap-4 justify-end pt-2 col-span-1 md:col-span-2">
               <Button
+                type="button"
                 className="bg-[#026892] hover:bg-[#026892]/90"
                 onClick={handleCreateAssessment}
               >
