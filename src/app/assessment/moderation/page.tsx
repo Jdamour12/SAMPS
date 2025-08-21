@@ -214,12 +214,21 @@ function AssessmentModerationContent() {
                           variant="outline"
                           disabled={row.status === "Canceled"}
                           onClick={() => {
-                            const url = `/assessment/grade-entry?module=${encodeURIComponent(
-                              row.module
-                            )}&assessment=${encodeURIComponent(
-                              row.assessment
-                            )}`;
-                            window.location.href = url;
+                            if (row.type.toLowerCase() === "exam") {
+                              const params = new URLSearchParams({
+                                title: row.assessment,
+                                module: row.module,
+                                type: row.type,
+                              });
+                              window.location.href = `/assessment/examination?${params.toString()}`;
+                            } else {
+                              const url = `/assessment/grade-entry?module=${encodeURIComponent(
+                                row.module
+                              )}&assessment=${encodeURIComponent(
+                                row.assessment
+                              )}`;
+                              window.location.href = url;
+                            }
                           }}
                         >
                           {row.action}
