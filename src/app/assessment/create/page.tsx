@@ -40,7 +40,7 @@ function CreateAssessmentContent() {
       });
       window.location.href = `/assessment/examination?${params.toString()}`;
     } else {
-      alert("Assessment created!");
+      window.location.href = "/assessment/moderation";
     }
   };
 
