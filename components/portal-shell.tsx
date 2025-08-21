@@ -493,7 +493,7 @@ export function PortalShell({
           <div className="p-6 space-y-2 pt-20">
             {/* Page Header - Fixed */}
             <div
-              className="sticky top-0 z-30 bg-white flex items-center justify-between py-4 mb-4 border-b border-gray-200"
+              className="sticky top-0 z-30 flex items-center justify-between py-4 mb-4 border-b border-gray-200"
               style={{ minHeight: "72px" }}
             >
               <div>
