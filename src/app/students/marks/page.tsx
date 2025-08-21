@@ -111,7 +111,7 @@ export default function StudentMarksPage() {
       <div className="mb-4 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
         <div className="flex gap-2 items-center">
           <select
-            className="border rounded px-3 py-2"
+            className="border rounded px-3 py-2 bg-white"
             value={semester}
             onChange={(e) => setSemester(e.target.value)}
           >
@@ -120,7 +120,7 @@ export default function StudentMarksPage() {
             ))}
           </select>
           <select
-            className="border rounded px-3 py-2"
+            className="border rounded px-3 py-2 bg-white"
             value={module}
             onChange={(e) => setModule(e.target.value)}
           >
@@ -128,7 +128,7 @@ export default function StudentMarksPage() {
               <option key={m}>{m}</option>
             ))}
           </select>
-          <select className="border rounded px-3 py-2" defaultValue={years[0]}>
+          <select className="border rounded px-3 py-2 bg-white" defaultValue={years[0]}>
             {years.map((y) => (
               <option key={y}>{y}</option>
             ))}
