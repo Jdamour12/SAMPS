@@ -118,14 +118,20 @@ function CreateAssessmentContent() {
               </Select>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Total Marks</label>
-              <Input
-                type="number"
-                placeholder="100"
-                value={totalMarks}
-                onChange={(e) => setTotalMarks(e.target.value)}
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 col-span-1 md:col-span-2">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Total Marks</label>
+                <Input
+                  type="number"
+                  placeholder="100"
+                  value={totalMarks}
+                  onChange={(e) => setTotalMarks(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Assessment Date</label>
+                <Input type="datetime-local" />
+              </div>
             </div>
 
             <div className="space-y-2 col-span-1 md:col-span-2">
@@ -135,11 +141,6 @@ function CreateAssessmentContent() {
                 rows={4}
                 placeholder="Enter assessment description and instructions"
               />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Assessment Date</label>
-              <Input type="datetime-local" />
             </div>
 
             <div className="flex gap-4 justify-end pt-2 col-span-1 md:col-span-2">

@@ -72,7 +72,9 @@ function ClassListsContent() {
                   <SelectItem value="computer-science">
                     Computer Science
                   </SelectItem>
-                  <SelectItem value="information-technology">Information Technology</SelectItem>
+                  <SelectItem value="information-technology">
+                    Information Technology
+                  </SelectItem>
                 </SelectContent>
               </Select>
               <Select value={selectedYear} onValueChange={setSelectedYear}>
@@ -116,10 +118,18 @@ function ClassListsContent() {
                 <tbody>
                   {pagedStudents.map((student) => (
                     <tr className="border-t" key={student.studentId}>
-                      <td className="p-3 text-gray-700 text-sm">{student.studentNo}</td>
-                      <td className="p-3 text-black-900 text-sm">{student.studentId}</td>
-                      <td className="p-3 text-gray-700 text-sm">{student.email}</td>
-                      <td className="p-3 text-gray-700 text-sm">{student.year}</td>
+                      <td className="p-3 text-gray-700 text-sm">
+                        {student.studentNo}
+                      </td>
+                      <td className="p-3 font-bold text-gray-800">
+                        {student.studentId}
+                      </td>
+                      <td className="p-3 text-gray-700 text-sm">
+                        {student.email}
+                      </td>
+                      <td className="p-3 text-gray-700 text-sm">
+                        {student.year}
+                      </td>
                       <td className="p-3 text-gray-700 text-sm">
                         <Badge
                           className={

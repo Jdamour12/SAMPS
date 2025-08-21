@@ -132,7 +132,9 @@ function getExpandedSectionFromPath(pathname: string, navigation: any) {
   if (
     pathname.startsWith("/assessment/moderation") ||
     pathname.startsWith("/assessment/analysis") ||
-    pathname.startsWith("/assessment/grade-entry")
+    pathname.startsWith("/assessment/grade-entry") ||
+    pathname.startsWith("/assessment/examination") ||
+    pathname.startsWith("/assessment/create")
   ) {
     return "Assessment";
   }
@@ -192,9 +194,10 @@ export function PortalShell({
       pathname.startsWith("/assessment/moderation") ||
       pathname.startsWith("/assessment/analysis") ||
       pathname.startsWith("/assessment/grade-entry") ||
-      pathname.startsWith("/assessment/create")
+      pathname.startsWith("/assessment/create") ||
+      pathname.startsWith("/assessment/examination")
     ) {
-      // Always highlight 'Grades' for these hidden subpages and for create
+      // Always highlight 'Grades' for these hidden subpages and for create/examination
       activeSubItemUrl = "/assessment/grades";
       setExpandedSection("Assessment");
     } else {
