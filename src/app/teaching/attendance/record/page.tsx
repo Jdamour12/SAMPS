@@ -13,7 +13,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChevronRight } from "lucide-react";
+import {
+  ChevronRight,
+  Users,
+  CheckCircle,
+  XCircle,
+  BadgeCheck,
+} from "lucide-react";
 
 // Dummy students data
 const students = [
@@ -67,19 +73,22 @@ function AttendanceRecordContent() {
       label: "Total Students",
       value: students.length,
       sub: "All enrolled for this session",
-      color: "bg-[#026892] text-white",
+      icon: <Users className="h-6 w-6 text-blue-600" />,
+      subColor: "text-gray-500",
     },
     {
       label: "Present",
       value: students.filter((s) => s.status === "Present").length,
       sub: `Marked present by device • Avg Attendance: ${sessionPercent}%`,
-      color: "bg-green-100 text-green-700",
+      icon: <CheckCircle className="h-6 w-6 text-green-600" />,
+      subColor: "text-green-600",
     },
     {
       label: "Absent",
       value: students.filter((s) => s.status === "Absent").length,
       sub: "Not recorded by device",
-      color: "bg-red-100 text-red-700",
+      icon: <XCircle className="h-6 w-6 text-red-600" />,
+      subColor: "text-red-600",
     },
     {
       label: "Absent With Permission",
@@ -87,7 +96,8 @@ function AttendanceRecordContent() {
         (s) => s.status === "Absent" && s.absenceType === "With Permission"
       ).length,
       sub: "Excused absences",
-      color: "bg-yellow-100 text-yellow-700",
+      icon: <BadgeCheck className="h-6 w-6 text-yellow-500" />,
+      subColor: "text-yellow-700",
     },
   ];
 
@@ -132,25 +142,20 @@ function AttendanceRecordContent() {
           {stats.map((stat, i) => (
             <Card
               key={i}
-              className={`rounded-xl shadow-lg p-6 flex flex-col items-center justify-center h-40 ${stat.color}`}
+              className="rounded-xl bg-white shadow-sm p-5 flex flex-col justify-between h-full"
+              style={{ minWidth: 0 }}
             >
-              <div className="text-lg font-bold tracking-wide mb-1">
-                {stat.label}
+              <div className="flex items-center justify-between mb-2 w-full">
+                <CardTitle className="text-base font-medium text-gray-900">
+                  {stat.label}
+                </CardTitle>
+                <div className="p-2 bg-blue-100 rounded-lg">{stat.icon}</div>
               </div>
-              <div
-                className="text-4xl font-extrabold mb-2"
-                style={{
-                  color: stat.label === "Total Students" ? "#fff" : undefined,
-                }}
-              >
+              <div className="text-3xl font-bold text-gray-900 mb-1">
                 {stat.value}
               </div>
               <div
-                className="text-sm font-medium opacity-80 text-center"
-                style={{
-                  color:
-                    stat.label === "Total Students" ? "#e0e7ef" : undefined,
-                }}
+                className={`text-xs ${stat.subColor} flex items-center gap-1 mt-1 text-center w-full`}
               >
                 {stat.sub}
               </div>
