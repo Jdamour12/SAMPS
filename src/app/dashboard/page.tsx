@@ -362,7 +362,7 @@ function DashboardContent({ role }: { role: string }) {
           </div>
         </Card>
 
-        <Card className="academic-card w-[800px]">
+        <Card className="academic-card w-[810px]">
         <CardHeader className="pb-3">
           <CardTitle className="text-lg font-semibold text-gray-900">
             Recent Activity
