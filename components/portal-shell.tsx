@@ -89,6 +89,10 @@ const navigationConfig = {
         items: [
           { title: "Calendar", url: "/assessment/calendar" },
           { title: "Grades", url: "/assessment/grades" },
+          {
+            title: "Grades Configuration",
+            url: "/assessment/grades-configuration",
+          },
           { title: "Results", url: "/students/marks" },
           // The following are hidden from the sidebar UI but remain in config for logic:
           { title: "Moderation", url: "/assessment/moderation", hidden: true },
