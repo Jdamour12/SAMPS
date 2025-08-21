@@ -101,7 +101,7 @@ function GradesContent() {
       </div>
       <div className="space-y-4">
         <h2 className="text-xl font-semibold text-gray-900">All Courses</h2>
-        <Card className="px-6 py-4 border-2 mx-4 border-gray-100">
+        <Card className="px-6 py-4 border-2 mx-4 border-none bg-transparent shadow-none">
           <div className="grid gap-4 md:grid-cols-2">
             {filteredModules.map((module, index) => (
               <Card key={index} className="academic-card w-full">
