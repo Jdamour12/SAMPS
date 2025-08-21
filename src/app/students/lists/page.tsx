@@ -63,9 +63,9 @@ function ClassListsContent() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="flex flex-wrap gap-4 justify-between items-center">
+            <div className="flex flex-wrap gap-2 md:gap-3 items-center">
               <Select defaultValue="computer-science">
-                <SelectTrigger className="w-[200px]">
+                <SelectTrigger className="w-[180px] rounded-md border-gray-300 focus:ring-2 focus:ring-blue-200">
                   <SelectValue placeholder="Select Class" />
                 </SelectTrigger>
                 <SelectContent>
@@ -78,7 +78,7 @@ function ClassListsContent() {
                 </SelectContent>
               </Select>
               <Select value={selectedYear} onValueChange={setSelectedYear}>
-                <SelectTrigger className="w-[140px]">
+                <SelectTrigger className="w-[120px] rounded-md border-gray-300 focus:ring-2 focus:ring-blue-200">
                   <SelectValue placeholder="Year of Study" />
                 </SelectTrigger>
                 <SelectContent>
@@ -97,10 +97,10 @@ function ClassListsContent() {
                   setSearch(e.target.value);
                   setPage(1);
                 }}
-                className="w-[250px] border-gray-300 focus:border-none focus:ring-0"
+                className="w-[300px] rounded-md border-gray-300 focus:ring-2 focus:ring-blue-200"
                 size={1}
               />
-              <Button className="bg-[#026892] hover:bg-[#026892]/90">
+              <Button className="bg-[#026892] hover:bg-[#026892]/90 ml-auto">
                 Export List
               </Button>
             </div>
