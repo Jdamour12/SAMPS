@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Users, CalendarDays, Layers } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import {
@@ -41,22 +42,19 @@ function AttendanceContent() {
       label: "Total Sessions",
       value: 10,
       sub: "This semester",
-      color: "bg-[#035B8A] text-white",
-      icon: null,
+      icon: <CalendarDays className="h-6 w-6 text-blue-600" />,
     },
     {
       label: "This Week",
       value: 8,
       sub: "Sessions scheduled",
-      color: "bg-gradient-to-r from-purple-400 to-purple-600 text-white",
-      icon: null,
+      icon: <Users className="h-6 w-6 text-green-600" />,
     },
     {
       label: "Active Classes",
       value: 3,
       sub: "Different programs",
-      color: "bg-gradient-to-r from-orange-400 to-orange-600 text-white",
-      icon: null,
+      icon: <Layers className="h-6 w-6 text-purple-600" />,
     },
   ];
   const sessions = [
@@ -214,17 +212,32 @@ function AttendanceContent() {
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-4">
         {stats.map((stat, i) => (
-          <div
+          <Card
             key={i}
-            className={`rounded-xl shadow-sm p-5 ${stat.color}`}
+            className="rounded-xl bg-white shadow-sm p-5 flex flex-col justify-between h-full"
             style={{ minWidth: 0 }}
           >
-            <div className="text-lg font-semibold">{stat.label}</div>
-            <div className="text-3xl font-bold my-2">{stat.value}</div>
-            <div className="text-xs opacity-80">{stat.sub}</div>
-          </div>
+            <div className="flex items-center justify-between mb-2">
+              <CardTitle className="text-base font-medium text-gray-900">
+                {stat.label}
+              </CardTitle>
+              <div className="p-2 bg-blue-100 rounded-lg">{stat.icon}</div>
+            </div>
+            <div className="text-3xl font-bold text-gray-900 mb-1">
+              {stat.value}
+            </div>
+            <div className="text-xs text-green-600 flex items-center gap-1 mt-1">
+              {i === 0 ? (
+                <span className="text-green-600">
+                  +12% from last semester
+                </span>
+              ) : (
+                <span className="text-blue-600">{stat.sub}</span>
+              )}
+            </div>
+          </Card>
         ))}
       </div>
 
@@ -461,10 +474,18 @@ function AttendanceContent() {
                   <tbody className="text-gray-700">
                     {paginatedSessions.map((s, i) => (
                       <tr className="border-t" key={i}>
-                        <td className="p-3 whitespace-nowrap text-sm">{s.name}</td>
-                        <td className="p-3 whitespace-nowrap text-sm">{s.type}</td>
-                        <td className="p-3 whitespace-nowrap text-sm">{s.class}</td>
-                        <td className="p-3 whitespace-nowrap text-sm">{s.location}</td>
+                        <td className="p-3 whitespace-nowrap text-sm">
+                          {s.name}
+                        </td>
+                        <td className="p-3 whitespace-nowrap text-sm">
+                          {s.type}
+                        </td>
+                        <td className="p-3 whitespace-nowrap text-sm">
+                          {s.class}
+                        </td>
+                        <td className="p-3 whitespace-nowrap text-sm">
+                          {s.location}
+                        </td>
                         <td className="p-3 whitespace-nowrap flex items-center gap-2 text-sm">
                           {s.attendance}
                           <Badge
@@ -481,7 +502,9 @@ function AttendanceContent() {
                             {s.percent}%
                           </Badge>
                         </td>
-                        <td className="p-3 whitespace-nowrap text-sm">{s.created}</td>
+                        <td className="p-3 whitespace-nowrap text-sm">
+                          {s.created}
+                        </td>
                         <td className="p-3 whitespace-nowrap text-sm">
                           <Button
                             variant="ghost"
@@ -621,8 +644,12 @@ function AttendanceContent() {
                       );
                       return (
                         <tr key={s.id} className="border-t">
-                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">{s.no}</td>
-                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">{s.id}</td>
+                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">
+                            {s.no}
+                          </td>
+                          <td className="p-3 whitespace-nowrap text-gray-700 text-sm">
+                            {s.id}
+                          </td>
                           <td className="p-3 whitespace-nowrap text-gray-700 text-sm">
                             <Badge
                               className={
