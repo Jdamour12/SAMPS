@@ -297,7 +297,10 @@ function DashboardContent({ role }: { role: string }) {
             <CardContent>{widget.content}</CardContent>
           </Card>
         ))}
+      
+      </div>
 
+      <div className="flex gap-6  lg:grid-cols-2">
         <Card
           className="academic-card md:col-span-2 flex flex-row items-start justify-start"
           style={{ width: "400px", minWidth: 0, padding: 0 }}
@@ -358,9 +361,8 @@ function DashboardContent({ role }: { role: string }) {
             
           </div>
         </Card>
-      </div>
 
-      <Card className="academic-card w-[800px]">
+        <Card className="academic-card w-[800px]">
         <CardHeader className="pb-3">
           <CardTitle className="text-lg font-semibold text-gray-900">
             Recent Activity
@@ -410,6 +412,8 @@ function DashboardContent({ role }: { role: string }) {
           </div>
         </CardContent>
       </Card>
+      </div>
+      
     </>
   );
 }
