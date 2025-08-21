@@ -300,7 +300,7 @@ function DashboardContent({ role }: { role: string }) {
       
       </div>
 
-      <div className="flex gap-6  lg:grid-cols-2">
+      <div className="flex gap-4  lg:grid-cols-2">
         <Card
           className="academic-card md:col-span-2 flex flex-row items-start justify-start"
           style={{ width: "400px", minWidth: 0, padding: 0 }}
@@ -362,7 +362,7 @@ function DashboardContent({ role }: { role: string }) {
           </div>
         </Card>
 
-        <Card className="academic-card w-[810px]">
+        <Card className="academic-card w-[800px] ">
         <CardHeader className="pb-3">
           <CardTitle className="text-lg font-semibold text-gray-900">
             Recent Activity
