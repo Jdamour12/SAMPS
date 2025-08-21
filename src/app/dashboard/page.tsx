@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { PortalShell } from "@/components/portal-shell";
 import {
   Card,
@@ -18,7 +19,6 @@ import {
   ClipboardCheck,
   Clock,
   FileText,
-  PieChart,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -31,6 +31,9 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
+  PieChart,
+  Pie,
+  Cell,
 } from "recharts";
 
 const performanceData = [
@@ -49,7 +52,7 @@ function getDashboardWidgets(role: string) {
         <div className="space-y-3">
           <Link href="/teaching/attendance">
             <Button
-              className="w-full justify-start bg-blue-50 text-blue-700 mb-2 hover:bg-blue-100 border-blue-200"
+              className="w-full justify-start bg-blue-100 text-blue-800 mb-2 hover:bg-blue-200 h-12"
               variant="outline"
               size="sm"
             >
@@ -59,7 +62,7 @@ function getDashboardWidgets(role: string) {
           </Link>
           <Link href="/assessment/grades">
             <Button
-              className="w-full justify-start bg-blue-50 text-blue-700 mb-2 hover:bg-blue-100 border-blue-200"
+              className="w-full justify-start bg-blue-100 text-blue-800 mb-2 hover:bg-blue-200 h-12"
               variant="outline"
               size="sm"
             >
@@ -69,7 +72,7 @@ function getDashboardWidgets(role: string) {
           </Link>
           <Link href="/reports/teaching">
             <Button
-              className="w-full justify-start bg-orange-50 text-orange-700 hover:bg-orange-100 border-orange-200"
+              className="w-full justify-start bg-orange-100 text-orange-700 hover:bg-orange-100 border-none h-12"
               variant="outline"
               size="sm"
             >
@@ -161,10 +164,57 @@ function getDashboardWidgets(role: string) {
   return [...baseWidgets, ...(roleSpecificWidgets[role] || [])];
 }
 
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+
+const moduleOptions = [
+  "Advanced Math",
+  "Statistics",
+  "Programming",
+  "Networks",
+  "Database",
+];
+
 function DashboardContent({ role }: { role: string }) {
+  const [selectedModule, setSelectedModule] = React.useState<string>(
+    moduleOptions[0]
+  );
   const dashboardWidgets = getDashboardWidgets(role);
+  const filteredPerformanceData = performanceData.filter(
+    (d) => d.module === selectedModule
+  );
+
   return (
     <>
+      {/* Quick Actions and Module Dropdown aligned horizontally */}
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex-1">
+          {/* ...existing code for Quick Actions... */}
+        </div>
+        <div className="flex items-center gap-2 min-w-[260px]">
+          <label className="text-sm font-medium font-bold text-gray-700">
+            Module
+          </label>
+          <Select value={selectedModule} onValueChange={setSelectedModule}>
+            <SelectTrigger className="w-[160px]">
+              <SelectValue placeholder="Select a module" />
+            </SelectTrigger>
+            <SelectContent>
+              {moduleOptions.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="academic-card border-l-4 border-l-blue-500">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -249,55 +299,68 @@ function DashboardContent({ role }: { role: string }) {
         ))}
 
         <Card
-          className="academic-card md:col-span-2"
-          style={{ minHeight: 320 }}
+          className="academic-card md:col-span-2 flex flex-row items-start justify-start"
+          style={{ width: "400px", minWidth: 0, padding: 0 }}
         >
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg font-semibold text-gray-900">
-              Performance Analytics
-            </CardTitle>
-            <CardDescription className="text-gray-600">
-              Student performance trends by module
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="w-full">
-              <ChartContainer
-                config={{
-                  score: { color: "#026892" },
-                  attendance: { color: "#22c55e" },
-                }}
-              >
-                <BarChart
-                  width={400}
-                  height={180}
-                  data={performanceData}
-                  margin={{ top: 10, right: 20, left: 0, bottom: 5 }}
-                >
-                  <XAxis dataKey="module" stroke="#888" fontSize={11} />
-                  <YAxis stroke="#888" fontSize={11} />
-                  <Tooltip />
-                  <Legend />
-                  <Bar
-                    dataKey="score"
-                    fill="#026892"
-                    name="Score"
-                    radius={[4, 4, 0, 0]}
-                  />
-                  <Bar
-                    dataKey="attendance"
-                    fill="#22c55e"
-                    name="Attendance"
-                    radius={[4, 4, 0, 0]}
-                  />
-                </BarChart>
-              </ChartContainer>
+          <div className="flex flex-col w-full items-start">
+            <div className="flex flex-col justify-start items-start pl-8 pt-2 w-full">
+              <CardTitle className="text-lg font-semibold text-gray-900 mb-1">
+                Performance Analytics
+              </CardTitle>
+              <CardDescription className="text-gray-600">
+                Score vs Attendance for {selectedModule}
+              </CardDescription>
             </div>
-          </CardContent>
+            <div
+              className="flex-shrink-0 flex items-center justify-center"
+              style={{ width: 260, height: 260 }}
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={
+                      filteredPerformanceData.length
+                        ? [
+                            {
+                              name: "Score",
+                              value: filteredPerformanceData[0].score,
+                            },
+                            {
+                              name: "Attendance",
+                              value: filteredPerformanceData[0].attendance,
+                            },
+                          ]
+                        : [
+                            { name: "Score", value: 70 },
+                            { name: "Attendance", value: 85 },
+                          ]
+                    }
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={90}
+                    innerRadius={55}
+                    label={false}
+                  >
+                    <Cell key="score" fill="#026892" />
+                    <Cell key="attendance" fill="#22c55e" />
+                  </Pie>
+                  <Tooltip />
+                  <Legend
+                    verticalAlign="bottom"
+                    iconType="circle"
+                    height={36}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            
+          </div>
         </Card>
       </div>
 
-      <Card className="academic-card">
+      <Card className="academic-card w-[800px]">
         <CardHeader className="pb-3">
           <CardTitle className="text-lg font-semibold text-gray-900">
             Recent Activity
