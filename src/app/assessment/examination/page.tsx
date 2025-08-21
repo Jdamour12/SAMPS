@@ -121,7 +121,7 @@ function ExaminationAssessmentContent({
           <div>
             <div className="text-xs text-gray-500">Total Marks</div>
             <div className="font-semibold text-base">
-              {totalMarks + 1 || "-"}
+              {totalMarks || "-"}
             </div>
           </div>
           {/* ...existing code... */}
