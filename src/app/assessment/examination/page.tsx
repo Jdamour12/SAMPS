@@ -121,7 +121,7 @@ function ExaminationAssessmentContent({
           <div>
             <div className="text-xs text-gray-500">Total Marks</div>
             <div className="font-semibold text-base">
-              {totalMarks || "-"}
+              {"50"}
             </div>
           </div>
           {/* ...existing code... */}
@@ -174,9 +174,9 @@ function ExaminationAssessmentContent({
                   <tbody>
                     {paginatedStudents.map((student) => (
                       <tr className="border-t" key={student.id}>
-                        <td className="p-3">{student.no}</td>
-                        <td className="p-3">{student.id}</td>
-                        <td className="p-3">
+                        <td className="p-3 text-gray-600 text-sm">{student.no}</td>
+                        <td className="p-3 text-black[300] font-bold text-sm">{student.id}</td>
+                        <td className="p-3 text-gray-600 text-sm">
                           <Input
                             className="w-20"
                             placeholder={`0/${

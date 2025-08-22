@@ -210,7 +210,7 @@ function AttendanceContent() {
   };
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto">
+    <div className="space-y-6 w-full">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-4">
         {stats.map((stat, i) => (
@@ -301,7 +301,7 @@ function AttendanceContent() {
                   >
                     &times;
                   </button>
-                  <h2 className="text-2xl font-bold mb-2 text-[#026892]">
+                  <h2 className="text-2xl font-bold mb-2 text-black">
                     Create Attendance Session
                   </h2>
                   <p className="text-base text-gray-600 mb-6">
@@ -342,7 +342,7 @@ function AttendanceContent() {
                         onValueChange={setAssignedClass}
                         required
                       >
-                        <SelectTrigger className="text-base py-2">
+                        <SelectTrigger className="text-sm py-2 font-medium">
                           <SelectValue placeholder="Choose Class" />
                         </SelectTrigger>
                         <SelectContent>
@@ -367,7 +367,7 @@ function AttendanceContent() {
                         onValueChange={setSessionTypeValue}
                         required
                       >
-                        <SelectTrigger className="text-base py-2">
+                        <SelectTrigger className="text-sm font-medium py-2">
                           <SelectValue placeholder="Choose Type" />
                         </SelectTrigger>
                         <SelectContent>
@@ -398,7 +398,7 @@ function AttendanceContent() {
                         onValueChange={setDeviceSerial}
                         required
                       >
-                        <SelectTrigger className="text-base py-2">
+                        <SelectTrigger className="text-sm font-medium py-2">
                           <SelectValue placeholder="Choose Available Device" />
                         </SelectTrigger>
                         <SelectContent>

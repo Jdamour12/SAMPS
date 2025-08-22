@@ -123,7 +123,7 @@ function AttendanceRecordContent() {
       title={sessionName}
       description="Attendance record and statistics for this session."
     >
-      <div className="w-full px-4 md:px-8 space-y-6">
+      <div className="w-full space-y-6">
         {/* Back Button */}
         <div className="mb-2 flex items-center">
           <Button

@@ -109,18 +109,18 @@ export default function StudentMarksPage() {
   return (
     <PortalShell title="Students Marks" description="View your student marks.">
       <div className="mb-4 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-4 items-center">
           <select
-            className="border rounded px-3 py-2 bg-white"
+            className="border rounded-md px-3 py-2 bg-white space-x-3"
             value={semester}
             onChange={(e) => setSemester(e.target.value)}
           >
             {semesters.map((s) => (
-              <option key={s}>{s}</option>
+              <option className="" key={s}>{s}</option>
             ))}
           </select>
           <select
-            className="border rounded px-3 py-2 bg-white"
+            className="border rounded-md px-3 py-2 bg-white"
             value={module}
             onChange={(e) => setModule(e.target.value)}
           >
@@ -128,7 +128,7 @@ export default function StudentMarksPage() {
               <option key={m}>{m}</option>
             ))}
           </select>
-          <select className="border rounded px-3 py-2 bg-white" defaultValue={years[0]}>
+          <select className="border rounded-md px-3 py-2 bg-white" defaultValue={years[0]}>
             {years.map((y) => (
               <option key={y}>{y}</option>
             ))}

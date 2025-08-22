@@ -75,9 +75,11 @@ function CreateAssessmentContent() {
           <CardDescription>
             Design and configure a new assessment
           </CardDescription>
+          <div className="h-3"></div>
+          <hr />
         </CardHeader>
         <CardContent>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-8 rounded-xl shadow-lg w-full">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 shadow-none w-full">
             <div className="space-y-2">
               <label className="text-sm font-medium">Module</label>
               <Select

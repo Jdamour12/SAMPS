@@ -31,17 +31,9 @@ function ModulesContent() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        <div className="flex-1 max-w-md">
-          <div className="relative">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-            <Input
-              placeholder="Search modules..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 w-full"
-            />
-          </div>
-        </div>
+        <h2 className="text-xl font-semibold text-gray-900">
+          Assigned Courses
+        </h2>
         <div className="flex gap-2">
           <Button
             variant={activeTab === "current" ? "default" : "outline"}
@@ -59,6 +51,11 @@ function ModulesContent() {
             variant={activeTab === "upcoming" ? "default" : "outline"}
             size="sm"
             onClick={() => setActiveTab("upcoming")}
+            className={
+              activeTab === "upcoming"
+                ? "bg-[#026892] hover:bg-[#026892]/90"
+                : ""
+            }
           >
             Upcoming
           </Button>
@@ -66,20 +63,34 @@ function ModulesContent() {
             variant={activeTab === "completed" ? "default" : "outline"}
             size="sm"
             onClick={() => setActiveTab("completed")}
+            className={
+              activeTab === "completed"
+                ? "bg-[#026892] hover:bg-[#026892]/90"
+                : ""
+            }
           >
             Completed
           </Button>
         </div>
       </div>
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-900">
-          Assigned Courses
-        </h2>
+        <div className="flex-1 max-w-md">
+          <div className="relative">
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+            <Input
+              placeholder="Search modules..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-9 w-full"
+            />
+          </div>
+        </div>
+        
         <Card
           style={{ background: "transparent", boxShadow: "none" }}
-          className="p-4 border-none"
+          className="py-4 border-none w-full"
         >
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 w-full">
             {filteredModules.map((module, index) => (
               <Card key={index} className="academic-card w-full">
                 <CardContent className="p-6">

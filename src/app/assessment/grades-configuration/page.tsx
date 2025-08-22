@@ -60,7 +60,7 @@ export default function GradesConfigurationPage() {
       title="Grades Configuration"
       description="Set maximum marks for each assessment type. Exams are always 50, others must total ≤ 50."
     >
-      <div className="w-full h-full px-0 md:px-4 py-4 flex flex-col">
+      <div className="w-full h-full px-0  py-4 flex flex-col">
         <Card className="w-full h-full flex flex-col justify-between shadow-sm">
           <CardHeader className="pb-2">
             <CardTitle className="text-lg">

@@ -111,7 +111,6 @@ function ClassListsContent() {
                     <th className="text-left p-3 font-medium">Student NO</th>
                     <th className="text-left p-3 font-medium">Student ID</th>
                     <th className="text-left p-3 font-medium">Email</th>
-                    <th className="text-left p-3 font-medium">Year</th>
                     <th className="text-left p-3 font-medium">Status</th>
                   </tr>
                 </thead>
@@ -127,9 +126,7 @@ function ClassListsContent() {
                       <td className="p-3 text-gray-700 text-sm">
                         {student.email}
                       </td>
-                      <td className="p-3 text-gray-700 text-sm">
-                        {student.year}
-                      </td>
+                      
                       <td className="p-3 text-gray-700 text-sm">
                         <Badge
                           className={

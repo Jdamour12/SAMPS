@@ -196,12 +196,12 @@ function DashboardContent({ role }: { role: string }) {
         <div className="flex-1">
           {/* ...existing code for Quick Actions... */}
         </div>
-        <div className="flex items-center gap-2 min-w-[260px]">
-          <label className="text-sm font-medium font-bold text-gray-700">
+        <div className="flex items-center gap-5 min-w-[260px]">
+          <label className="text-sm font-medium font-bold text-gray-900 hover:cursor-pointer" htmlFor="module">
             Module
           </label>
           <Select value={selectedModule} onValueChange={setSelectedModule}>
-            <SelectTrigger className="w-[160px]">
+            <SelectTrigger className="w-[287px]" id="module">
               <SelectValue placeholder="Select a module" />
             </SelectTrigger>
             <SelectContent>
@@ -319,7 +319,7 @@ function DashboardContent({ role }: { role: string }) {
               style={{ width: 260, height: 260 }}
             >
               <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
+                <PieChart className="mx-16">
                   <Pie
                     data={
                       filteredPerformanceData.length
@@ -344,7 +344,7 @@ function DashboardContent({ role }: { role: string }) {
                     cy="50%"
                     outerRadius={90}
                     innerRadius={55}
-                    label={false}
+                    label={true}
                   >
                     <Cell key="score" fill="#026892" />
                     <Cell key="attendance" fill="#22c55e" />
@@ -353,7 +353,7 @@ function DashboardContent({ role }: { role: string }) {
                   <Legend
                     verticalAlign="bottom"
                     iconType="circle"
-                    height={36}
+                    height={10}
                   />
                 </PieChart>
               </ResponsiveContainer>

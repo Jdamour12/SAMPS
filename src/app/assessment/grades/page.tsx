@@ -28,6 +28,7 @@ function GradesContent() {
     { code: "ENG150", name: "Academic Writing", credits: 10, status: "Active" },
     { code: "MATH202", name: "Calculus II", credits: 10, status: "Active" },
     { code: "HIST101", name: "World History", credits: 10, status: "Active" },
+    { code: "COE116", name: "Web Development", credits: 10, status: "Active" },
   ];
   const filteredModules = modules.filter(
     (m) =>
@@ -49,17 +50,7 @@ function GradesContent() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        <div className="flex-1 max-w-md">
-          <div className="relative">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-            <Input
-              placeholder="Search modules..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 w-full"
-            />
-          </div>
-        </div>
+        <h2 className="text-xl font-semibold text-gray-900">All Courses</h2>
         <div className="flex gap-2">
           <Button
             variant={activeTab === "current" ? "default" : "outline"}
@@ -100,13 +91,23 @@ function GradesContent() {
         </div>
       </div>
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-900">All Courses</h2>
-        <Card className="px-6 py-4 border-2 mx-4 border-none bg-transparent shadow-none">
-          <div className="grid gap-4 md:grid-cols-2">
+        <div className="flex-1 max-w-md">
+          <div className="relative">
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+            <Input
+              placeholder="Search modules..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-9 w-full"
+            />
+          </div>
+        </div>
+        <Card className="py-4 border-2 mx- border-none bg-transparent shadow-none w-full">
+          <div className="grid gap-4 md:grid-cols-3">
             {filteredModules.map((module, index) => (
               <Card key={index} className="academic-card w-full">
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center justify-between mb-3 w-full">
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-gray-900 pb-2">
                         {module.code} - {module.name}
