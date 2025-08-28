@@ -385,14 +385,24 @@ export function PortalShell({
 
           <div className="flex items-center gap-4">
             {/* Academic Period Selector */}
-            <Select defaultValue="2024-1">
+            <Select defaultValue="2024-2025">
               <SelectTrigger className="w-[160px] border-gray-300">
                 <SelectValue placeholder="Academic Period" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="2024-1">2024 Semester 1</SelectItem>
-                <SelectItem value="2024-2">2024 Semester 2</SelectItem>
-                <SelectItem value="2023-2">2023 Semester 2</SelectItem>
+                <SelectItem value="2024-2025">2024 - 2025</SelectItem>
+                <SelectItem value="2023-2024">2023 - 2024</SelectItem>
+                <SelectItem value="2022-2023">2022 - 2023</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select defaultValue="all">
+              <SelectTrigger className="w-[160px] border-gray-300">
+                <SelectValue placeholder="Academic Period" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Semesters</SelectItem>
+                <SelectItem value="semester-1">Semester 1</SelectItem>
+                <SelectItem value="semester-2">Semester 2</SelectItem>
               </SelectContent>
             </Select>
 
