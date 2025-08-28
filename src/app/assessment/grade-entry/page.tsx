@@ -43,11 +43,11 @@ function GradeEntryContent() {
 
   // Example students and initial grades
   const students = [
-    { name: "001", id: "STU001", grade: "85" },
-    { name: "002", id: "STU002", grade: "92" },
-    { name: "003", id: "STU003", grade: "78" },
-    { name: "004", id: "STU004", grade: "88" },
-    { name: "005", id: "STU005", grade: "90" },
+    { no: "001", id: "STU001", grade: "85" },
+    { no: "002", id: "STU002", grade: "92" },
+    { no: "003", id: "STU003", grade: "78" },
+    { no: "004", id: "STU004", grade: "88" },
+    { no: "005", id: "STU005", grade: "90" },
   ];
   const [grades, setGrades] = React.useState(students.map((s) => s.grade));
   const [changed, setChanged] = React.useState<number[]>([]);
@@ -74,7 +74,7 @@ function GradeEntryContent() {
     .map((student, idx) => ({ ...student, idx }))
     .filter(
       (student) =>
-        student.name.toLowerCase().includes(search.toLowerCase()) ||
+        student.no.toLowerCase().includes(search.toLowerCase()) ||
         student.id.toLowerCase().includes(search.toLowerCase())
     );
 
@@ -181,7 +181,7 @@ function GradeEntryContent() {
                 <tbody className="text-sm text-gray-700">
                   {paginatedStudents.map((student) => (
                     <tr className="border-t" key={student.id}>
-                      <td className="p-3">{student.name}</td>
+                      <td className="p-3">{student.no}</td>
                       <td className="p-3 font-bold text-sm">{student.id}</td>
                       <td className="p-3">
                         <Input
